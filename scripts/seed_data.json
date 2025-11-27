@@ -1,0 +1,93 @@
+{
+  "employees": [
+    {
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "role": "Developer",
+      "phone": "+1234567890"
+    },
+    {
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "role": "Manager",
+      "phone": "+1234567891"
+    },
+    {
+      "name": "Bob Johnson",
+      "email": "bob.johnson@example.com",
+      "role": "Developer",
+      "phone": "+1234567892"
+    },
+    {
+      "name": "Alice Williams",
+      "email": "alice.williams@example.com",
+      "role": "Designer",
+      "phone": "+1234567893"
+    },
+    {
+      "name": "Charlie Brown",
+      "email": "charlie.brown@example.com",
+      "role": "Developer",
+      "phone": "+1234567894"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "Implement user authentication",
+      "description": "Add JWT-based authentication system",
+      "status": "in-progress",
+      "priority": "high",
+      "dueDate": "2025-02-01T00:00:00.000Z"
+    },
+    {
+      "title": "Design landing page",
+      "description": "Create responsive landing page design",
+      "status": "todo",
+      "priority": "medium",
+      "dueDate": "2025-01-25T00:00:00.000Z"
+    },
+    {
+      "title": "Setup CI/CD pipeline",
+      "description": "Configure GitHub Actions for automated deployment",
+      "status": "completed",
+      "priority": "high",
+      "dueDate": "2025-01-20T00:00:00.000Z"
+    },
+    {
+      "title": "Write API documentation",
+      "description": "Document all API endpoints with examples",
+      "status": "todo",
+      "priority": "low",
+      "dueDate": "2025-02-15T00:00:00.000Z"
+    },
+    {
+      "title": "Optimize database queries",
+      "description": "Add indexes and optimize slow queries",
+      "status": "in-progress",
+      "priority": "medium",
+      "dueDate": "2025-01-30T00:00:00.000Z"
+    },
+    {
+      "title": "Implement search functionality",
+      "description": "Add full-text search for employees and tasks",
+      "status": "completed",
+      "priority": "medium",
+      "dueDate": "2025-01-18T00:00:00.000Z"
+    },
+    {
+      "title": "Add unit tests",
+      "description": "Write unit tests for critical functions",
+      "status": "todo",
+      "priority": "high",
+      "dueDate": "2025-02-10T00:00:00.000Z"
+    },
+    {
+      "title": "Create admin dashboard",
+      "description": "Build dashboard with metrics and charts",
+      "status": "in-progress",
+      "priority": "high",
+      "dueDate": "2025-02-05T00:00:00.000Z"
+    }
+  ]
+}
+
