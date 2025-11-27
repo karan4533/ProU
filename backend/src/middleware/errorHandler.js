@@ -1,5 +1,10 @@
 export const errorHandler = (err, req, res, next) => {
-  console.error('Error:', err);
+  console.error('❌ Error Handler:', err.name || 'Unknown Error');
+  console.error('❌ Error Message:', err.message);
+  console.error('❌ Error Stack:', err.stack);
+  if (err.errors) {
+    console.error('❌ Error Details:', err.errors);
+  }
 
   // Sequelize validation error
   if (err.name === 'SequelizeValidationError') {

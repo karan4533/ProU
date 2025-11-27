@@ -59,18 +59,34 @@ export default function Login() {
 
       const response = await API.post(endpoint, payload);
 
-      // Backend returns: {data: {user, token}}
-      // API interceptor extracts response.data, so response = {user, token}
-      if (response && response.token) {
+      // API interceptor extracts response.data, so:
+      // If backend returns {data: {user, token}}, response = {data: {user, token}}
+      // If backend returns {user, token}, response = {user, token}
+      let user, token;
+      
+      if (response.data && response.data.user) {
+        // Response format: {data: {user, token}}
+        user = response.data.user;
+        token = response.data.token;
+      } else if (response.user) {
+        // Response format: {user, token}
+        user = response.user;
+        token = response.token;
+      }
+
+      if (token && user) {
         // Store token
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('user', JSON.stringify(response.user));
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
         
         // Update auth context
-        login(response.user, response.token);
+        login(user, token);
         
         // Redirect to dashboard
         navigate('/');
+      } else {
+        console.error('Invalid response structure:', response);
+        setError('Invalid response from server. Please try again.');
       }
     } catch (err) {
       console.error('Login error:', err);

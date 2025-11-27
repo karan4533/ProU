@@ -62,10 +62,8 @@ export const register = async (req, res, next) => {
     delete userData.password;
 
     res.status(201).json({
-      data: {
-        user: userData,
-        token
-      }
+      user: userData,
+      token
     });
   } catch (error) {
     next(error);
@@ -112,12 +110,12 @@ export const login = async (req, res, next) => {
     delete userData.password;
 
     res.json({
-      data: {
-        user: userData,
-        token
-      }
+      user: userData,
+      token
     });
   } catch (error) {
+    console.error('Login error:', error);
+    console.error('Error stack:', error.stack);
     next(error);
   }
 };
