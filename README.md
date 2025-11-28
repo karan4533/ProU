@@ -19,6 +19,7 @@ A modern full-stack web application for managing employees and tasks within an o
 
 - [Overview](#overview)
 - [Features](#features)
+- [Project Pics](#project-pics)
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
 - [Setup & Installation](#setup--installation)
@@ -85,6 +86,37 @@ The Employee & Task Management System is a comprehensive solution for organizati
 - Form validation (client and server-side)
 - Pagination for large datasets
 - Real-time search functionality
+
+---
+
+## 📸 Project Pics
+
+### Application Screenshots
+
+<div align="center">
+
+#### Dashboard Overview
+<img src="assets/Screenshot%202025-11-29%20001136.png" alt="Dashboard Overview" width="800"/>
+
+#### Employee Management
+<img src="assets/Screenshot%202025-11-29%20001940.png" alt="Employee Management" width="800"/>
+
+#### Task Management
+<img src="assets/Screenshot%202025-11-29%20002034.png" alt="Task Management" width="800"/>
+
+#### Task Creation
+<img src="assets/Screenshot%202025-11-29%20002057.png" alt="Task Creation" width="800"/>
+
+#### Employee Details
+<img src="assets/Screenshot%202025-11-29%20002116.png" alt="Employee Details" width="800"/>
+
+#### Data Visualizations
+<img src="assets/Screenshot%202025-11-29%20002144.png" alt="Data Visualizations" width="800"/>
+
+#### Task Analytics
+<img src="assets/Screenshot%202025-11-29%20002209.png" alt="Task Analytics" width="800"/>
+
+</div>
 
 ---
 
@@ -621,6 +653,22 @@ This project is licensed under the ISC License.
 - Express.js for the robust backend framework
 - TailwindCSS for the utility-first CSS framework
 - All open-source contributors whose packages made this project possible
+
+---
+
+## 🎥 Project Demo Video
+
+<div align="center">
+
+### Workflow Demonstration
+
+[![Workflow Video](assets/Screenshot%202025-11-29%20001136.png)](https://github.com/karan4533/ProU/raw/main/assets/workflow%20video%20.mp4)
+
+**Click the image above or [here](https://github.com/karan4533/ProU/raw/main/assets/workflow%20video%20.mp4) to watch the full workflow demonstration video**
+
+*The video demonstrates the complete workflow of the Employee & Task Management System, including authentication, employee management, task assignment, and data visualization features.*
+
+</div>
 
 ---
 
