@@ -21,6 +21,10 @@ const commonOptions = {
   logging: process.env.NODE_ENV === 'development' ? console.log : false,
   dialectOptions: {
     connectTimeout: 60000,
+    // SSL configuration for cloud databases (Aiven, PlanetScale, etc.)
+    ssl: process.env.DB_HOST && process.env.DB_HOST.includes('aivencloud.com') ? {
+      rejectUnauthorized: false
+    } : undefined,
     // Remove authPlugins - let Sequelize handle authentication naturally
   },
   pool: {
