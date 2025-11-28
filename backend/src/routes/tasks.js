@@ -5,7 +5,9 @@ import {
   createTask,
   updateTask,
   deleteTask,
-  getTasksByStatus
+  getTasksByStatus,
+  getTasksByPriority,
+  getEmployeeWorkload
 } from '../controllers/taskController.js';
 import { authenticate } from '../middleware/auth.js';
 
@@ -14,8 +16,10 @@ const router = express.Router();
 // All routes require authentication
 router.use(authenticate);
 
-// Bonus endpoint - must be before /:id route
+// Metrics endpoints - must be before /:id route
 router.get('/metrics/tasks-by-status', getTasksByStatus);
+router.get('/metrics/tasks-by-priority', getTasksByPriority);
+router.get('/metrics/employee-workload', getEmployeeWorkload);
 
 router.get('/', getTasks);
 router.get('/:id', getTaskById);

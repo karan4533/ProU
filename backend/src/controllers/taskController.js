@@ -1,6 +1,7 @@
 import { Op } from 'sequelize';
 import { literal } from 'sequelize';
 import Task from '../models/Task.js';
+import Employee from '../models/Employee.js';
 
 export const getTasks = async (req, res, next) => {
   try {
@@ -147,6 +148,58 @@ export const getTasksByStatus = async (req, res, next) => {
     result.completed = completedCount;
 
     res.json({ data: result });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getTasksByPriority = async (req, res, next) => {
+  try {
+    const [lowCount, mediumCount, highCount] = await Promise.all([
+      Task.count({ where: { priority: 'low' } }),
+      Task.count({ where: { priority: 'medium' } }),
+      Task.count({ where: { priority: 'high' } })
+    ]);
+
+    const result = {
+      low: lowCount,
+      medium: mediumCount,
+      high: highCount
+    };
+
+    res.json({ data: result });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getEmployeeWorkload = async (req, res, next) => {
+  try {
+    // Get all employees
+    const employees = await Employee.findAll({
+      attributes: ['id', 'name', 'email', 'role']
+    });
+
+    // Get task counts for each employee
+    const workloadData = await Promise.all(
+      employees.map(async (employee) => {
+        const taskCount = await Task.count({
+          where: { assignedTo: employee.id }
+        });
+        return {
+          employeeId: employee.id,
+          employeeName: employee.name,
+          email: employee.email,
+          role: employee.role,
+          taskCount: taskCount
+        };
+      })
+    );
+
+    // Sort by task count descending
+    workloadData.sort((a, b) => b.taskCount - a.taskCount);
+
+    res.json({ data: workloadData });
   } catch (error) {
     next(error);
   }

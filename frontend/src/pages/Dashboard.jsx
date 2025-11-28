@@ -1,11 +1,16 @@
 import { useState, useEffect } from 'react';
 import API from '../services/api';
+import TaskStatusChart from '../components/TaskStatusChart';
+import TaskPriorityChart from '../components/TaskPriorityChart';
+import EmployeeWorkloadChart from '../components/EmployeeWorkloadChart';
 
 export default function Dashboard() {
   const [stats, setStats] = useState({
     totalEmployees: 0,
     totalTasks: 0,
-    tasksByStatus: { todo: 0, 'in-progress': 0, completed: 0 }
+    tasksByStatus: { todo: 0, 'in-progress': 0, completed: 0 },
+    tasksByPriority: { low: 0, medium: 0, high: 0 },
+    employeeWorkload: []
   });
   const [recentTasks, setRecentTasks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -18,16 +23,20 @@ export default function Dashboard() {
   const fetchDashboardData = async () => {
     try {
       setLoading(true);
-      const [employeesRes, tasksRes, metricsRes] = await Promise.all([
+      const [employeesRes, tasksRes, statusMetricsRes, priorityMetricsRes, workloadRes] = await Promise.all([
         API.get('/employees?limit=1'),
         API.get('/tasks?limit=1'),
-        API.get('/tasks/metrics/tasks-by-status')
+        API.get('/tasks/metrics/tasks-by-status'),
+        API.get('/tasks/metrics/tasks-by-priority'),
+        API.get('/tasks/metrics/employee-workload')
       ]);
 
       setStats({
         totalEmployees: employeesRes.meta?.total || 0,
         totalTasks: tasksRes.meta?.total || 0,
-        tasksByStatus: metricsRes.data || { todo: 0, 'in-progress': 0, completed: 0 }
+        tasksByStatus: statusMetricsRes.data || { todo: 0, 'in-progress': 0, completed: 0 },
+        tasksByPriority: priorityMetricsRes.data || { low: 0, medium: 0, high: 0 },
+        employeeWorkload: workloadRes.data || []
       });
 
       const recentTasksRes = await API.get('/tasks?limit=5&sort=createdAt:desc');
@@ -105,47 +114,26 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Tasks by Status Chart */}
-      <div className="bg-white p-6 rounded-lg shadow">
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">Tasks by Status</h2>
-        <div className="space-y-3">
-          <div>
-            <div className="flex justify-between mb-1">
-              <span className="text-sm font-medium text-gray-700">Todo</span>
-              <span className="text-sm font-medium text-gray-700">{stats.tasksByStatus.todo}</span>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-2">
-              <div
-                className="bg-gray-600 h-2 rounded-full"
-                style={{ width: `${stats.totalTasks > 0 ? (stats.tasksByStatus.todo / stats.totalTasks) * 100 : 0}%` }}
-              ></div>
-            </div>
-          </div>
-          <div>
-            <div className="flex justify-between mb-1">
-              <span className="text-sm font-medium text-gray-700">In Progress</span>
-              <span className="text-sm font-medium text-gray-700">{stats.tasksByStatus['in-progress']}</span>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-2">
-              <div
-                className="bg-blue-600 h-2 rounded-full"
-                style={{ width: `${stats.totalTasks > 0 ? (stats.tasksByStatus['in-progress'] / stats.totalTasks) * 100 : 0}%` }}
-              ></div>
-            </div>
-          </div>
-          <div>
-            <div className="flex justify-between mb-1">
-              <span className="text-sm font-medium text-gray-700">Completed</span>
-              <span className="text-sm font-medium text-gray-700">{stats.tasksByStatus.completed}</span>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-2">
-              <div
-                className="bg-green-600 h-2 rounded-full"
-                style={{ width: `${stats.totalTasks > 0 ? (stats.tasksByStatus.completed / stats.totalTasks) * 100 : 0}%` }}
-              ></div>
-            </div>
-          </div>
+      {/* Data Visualization Charts */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Tasks by Status Pie Chart */}
+        <div className="bg-white p-6 rounded-lg shadow">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">Tasks by Status</h2>
+          <TaskStatusChart data={stats.tasksByStatus} />
         </div>
+
+        {/* Tasks by Priority Bar Chart */}
+        <div className="bg-white p-6 rounded-lg shadow">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">Tasks by Priority</h2>
+          <TaskPriorityChart data={stats.tasksByPriority} />
+        </div>
+      </div>
+
+      {/* Employee Workload Chart */}
+      <div className="bg-white p-6 rounded-lg shadow">
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">Employee Workload (Top 10)</h2>
+        <p className="text-sm text-gray-500 mb-4">Number of tasks assigned to each employee</p>
+        <EmployeeWorkloadChart data={stats.employeeWorkload} />
       </div>
 
       {/* Recent Tasks */}
