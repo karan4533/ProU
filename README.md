@@ -95,14 +95,17 @@ The Employee & Task Management System is a comprehensive solution for organizati
 
 <div align="center">
 
-#### Login page
+#### Login Page
+<img src="assets/Screenshot%202025-11-29%20001136.png" alt="Login Page" width="800"/>
+
+#### Dashboard Overview
 <img src="assets/Screenshot%202025-11-29%20001136.png" alt="Dashboard Overview" width="800"/>
 
-#### Dashboard Overview  
+#### Employee Management
 <img src="assets/Screenshot%202025-11-29%20001940.png" alt="Employee Management" width="800"/>
 
-#### Employee Management
-<img src="assets/Screenshot%202025-11-29%20002034.png" alt="Task Management" width="800"/>
+#### Task Management
+<img src="assets/Screenshot%202025-11-29%20003543.png" alt="Task Management" width="800"/>
 
 #### Task Creation
 <img src="assets/Screenshot%202025-11-29%20002057.png" alt="Task Creation" width="800"/>
@@ -665,6 +668,8 @@ This project is licensed under the ISC License.
 [![Workflow Video](assets/Screenshot%202025-11-29%20001136.png)](https://github.com/karan4533/ProU/raw/main/assets/workflow%20video%20.mp4)
 
 **Click the image above or [here](https://github.com/karan4533/ProU/raw/main/assets/workflow%20video%20.mp4) to watch the full workflow demonstration video**
+
+> **Note:** The video file is stored using Git LFS. If you encounter any issues viewing it, please ensure Git LFS is properly configured.
 
 *The video demonstrates the complete workflow of the Employee & Task Management System, including authentication, employee management, task assignment, and data visualization features.*
 

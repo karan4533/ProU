@@ -38,12 +38,12 @@ coverage/
 *.tmp
 *.temp
 
-# Large media files
-*.mp4
+# Large media files (except in assets folder - tracked with Git LFS)
 *.mov
 *.avi
 *.mkv
 *.webm
+!assets/*.mp4
 
 # Deployment
 .vercel/
