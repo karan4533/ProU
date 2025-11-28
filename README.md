@@ -95,13 +95,13 @@ The Employee & Task Management System is a comprehensive solution for organizati
 
 <div align="center">
 
-#### Dashboard Overview
+#### Login page
 <img src="assets/Screenshot%202025-11-29%20001136.png" alt="Dashboard Overview" width="800"/>
 
-#### Employee Management
+#### Dashboard Overview  
 <img src="assets/Screenshot%202025-11-29%20001940.png" alt="Employee Management" width="800"/>
 
-#### Task Management
+#### Employee Management
 <img src="assets/Screenshot%202025-11-29%20002034.png" alt="Task Management" width="800"/>
 
 #### Task Creation
