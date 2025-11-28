@@ -16,14 +16,19 @@ if (process.env.NODE_ENV === 'development') {
 // Parse DATABASE_URL or use individual connection parameters
 let sequelize;
 
+// Check if using Aiven (requires SSL)
+const isAiven = process.env.DB_HOST && process.env.DB_HOST.includes('aivencloud.com');
+const isAivenSSLPort = process.env.DB_PORT && parseInt(process.env.DB_PORT) === 25060;
+
 const commonOptions = {
   dialect: 'mysql',
   logging: process.env.NODE_ENV === 'development' ? console.log : false,
   dialectOptions: {
     connectTimeout: 60000,
-    // SSL configuration for cloud databases (Aiven, PlanetScale, etc.)
-    ssl: process.env.DB_HOST && process.env.DB_HOST.includes('aivencloud.com') ? {
-      rejectUnauthorized: false
+    // SSL configuration for Aiven MySQL (required for port 25060)
+    ssl: (isAiven || isAivenSSLPort) ? {
+      rejectUnauthorized: false,
+      require: true
     } : undefined,
     // Remove authPlugins - let Sequelize handle authentication naturally
   },
