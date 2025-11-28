@@ -624,6 +624,4 @@ This project is licensed under the ISC License.
 
 **Built with ❤️ using React, Node.js, and MySQL**
 
-⭐ Star this repo if you find it helpful!
-
 </div>
