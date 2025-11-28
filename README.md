@@ -123,6 +123,22 @@ The Employee & Task Management System is a comprehensive solution for organizati
 
 ---
 
+### 🎥 Project Demo Video
+
+<div align="center">
+
+#### Workflow Demonstration
+
+[![Workflow Video](assets/Screenshot%202025-11-29%20001136.png)](https://github.com/karan4533/ProU/raw/main/assets/workflow%20video%20.mp4)
+
+**Click the image above or [here](https://github.com/karan4533/ProU/raw/main/assets/workflow%20video%20.mp4) to watch the full workflow demonstration video**
+
+*The video demonstrates the complete workflow of the Employee & Task Management System, including authentication, employee management, task assignment, and data visualization features.*
+
+</div>
+
+---
+
 ## 🛠 Tech Stack
 
 ### Frontend
@@ -656,24 +672,6 @@ This project is licensed under the ISC License.
 - Express.js for the robust backend framework
 - TailwindCSS for the utility-first CSS framework
 - All open-source contributors whose packages made this project possible
-
----
-
-## 🎥 Project Demo Video
-
-<div align="center">
-
-### Workflow Demonstration
-
-[![Workflow Video](assets/Screenshot%202025-11-29%20001136.png)](https://github.com/karan4533/ProU/raw/main/assets/workflow%20video%20.mp4)
-
-**Click the image above or [here](https://github.com/karan4533/ProU/raw/main/assets/workflow%20video%20.mp4) to watch the full workflow demonstration video**
-
-> **Note:** The video file is stored using Git LFS. If you encounter any issues viewing it, please ensure Git LFS is properly configured.
-
-*The video demonstrates the complete workflow of the Employee & Task Management System, including authentication, employee management, task assignment, and data visualization features.*
-
-</div>
 
 ---
 
