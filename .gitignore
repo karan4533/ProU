@@ -7,6 +7,7 @@ __pycache__/
 .env
 .env.local
 .env.production
+.env.*.local
 
 # Build outputs
 dist/
@@ -18,16 +19,26 @@ build/
 .idea/
 *.swp
 *.swo
+*.sublime-project
+*.sublime-workspace
 
 # OS
 .DS_Store
 Thumbs.db
+.DS_Store?
 
 # Testing
 coverage/
 .nyc_output/
+.jest/
 
 # Misc
 *.pem
 .cache/
+*.tmp
+*.temp
+
+# Deployment
+.vercel/
+.netlify/
 
