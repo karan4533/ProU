@@ -84,6 +84,22 @@ if (!process.env.DATABASE_URL && !process.env.DB_NAME) {
     });
 }
 
+// Root route
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Employee & Task Management API',
+    status: 'running',
+    version: '1.0.0',
+    endpoints: {
+      health: '/health',
+      api: '/api/v1',
+      auth: '/api/v1/auth',
+      employees: '/api/v1/employees',
+      tasks: '/api/v1/tasks'
+    }
+  });
+});
+
 // Routes
 app.use('/api/v1/auth', authRoutes); // Auth routes (public)
 app.use('/api/v1/employees', employeeRoutes); // Protected routes
